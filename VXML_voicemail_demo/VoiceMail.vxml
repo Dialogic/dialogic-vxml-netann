@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*
+* @author (C) Copyright 2014 Dialogic Inc. All rights reserved.
+*
+* Record and Play a Message Demo script for the PowerMedia XMS
+*
+-->
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-US">
+
+
+<!-- MAIN MENU.
+Within this menu dialog we will play a main menu prompt (main_menu.wav) 
+that asks the caller (user input) to enter a menu choice of the following:
+
+	DTMF 1: Play an greeting audio file - greeting.wav
+	DTMF 2: Record a message and play it back - VoiceMessage.msg
+	DTMF 3: Play a goodbye message and hang up - Goodbye.wav
+	
+Should the caller provide NO INPUT, this form dialog will play a prompt of no input (nomatch.wav) and return to the main menu dialog (MAIN MENU).
+Should the caller provide a NO MATCH, this form dialog will play a prompt of no match (nomatch.wav) and return to the main menu dialog (MAIN MENU).
+-->
+<menu id="main_menu" dtmf="false"> 
+	<prompt xml:lang="en-US">
+		<audio src="file:///var/lib/xms/media/en-US/vxml/main_menu.wav"/>
+	</prompt>
+
+	<choice dtmf="1" next="#play_audio"/>
+	<choice dtmf="2" next="#record_message"/>    
+	<choice dtmf="3" next="#goodbye"/>
+	
+	<nomatch>
+		<prompt xml:lang="en-US">
+			<audio src="file:///var/lib/xms/media/en-US/generic/audio/nomatch.wav"/>
+		</prompt>
+		<goto next="#main_menu"/>
+	</nomatch>    
+	<noinput>
+		<prompt xml:lang="en-US">
+			<audio src="file:///var/lib/xms/media/en-US/generic/audio/nomatch.wav"/>
+		</prompt>
+		<goto next="#main_menu"/>
+	</noinput>
+</menu>
+
+<!-- PRESS "1" - PLAY AN AUDIO FILE
+The caller (user input) has pressed DTMF 1.  
+This form dialog will play a simple greeting prompt (greeting.wav) and return to the main menu dialog (MAIN MENU).
+-->
+<form id="play_audio">
+<block>
+	<prompt xml:lang="en-US">
+		<audio src="file:///var/lib/xms/media/en-US/vxml/greeting.wav"/>
+	</prompt>
+	<goto next="#main_menu"/>
+</block>
+</form>
+
+<!-- PRESS "2" - RECORD VOICEMAIL
+The caller (user input) has pressed DTMF 2.  
+Within this form dialog we will play a recording intro (record_intro.wav),
+requesting the user to start a recording at the beep.
+
+Should the caller provide NO INPUT, this form dialog will play a prompt of no input (nomatch.wav) and return to the main menu dialog (MAIN MENU).
+Should the caller provide INPUT, this form dialog will first play a replay introduction prompt (replay_intro.wav)
+and then fill (record) the caller input to the record buffer (voiceMessage). Next this form dialog will replay the recorded buffer (voiceMessage)
+and return to the main menu dialog (MAIN MENU).
+
+
+NOTE: The %language%/recorded directory specifed path is within the XMS configuration under Media, Media Configuration 
+-->
+
+<form id="record_message">
+	<record name="voiceMessage"
+		beep="true"
+		maxtime="5s"
+		finalsilence="3s"
+		dtmfterm="false"
+		type="audio/x-wav">
+		<prompt xml:lang="en-US">
+			<audio src="file:///var/lib/xms/media/en-US/vxml/record_intro.wav"/>
+		</prompt>
+		<noinput> 
+			<prompt xml:lang="en-US">
+				<audio src="file:///var/lib/xms/media/en-US/generic/audio/nomatch.wav"/>
+			</prompt>
+			<goto next="#main_menu"/>
+		</noinput>
+	</record>
+	<filled>
+		<prompt xml:lang="en-US"> <!-- Play the voiceMessage buffer -->
+			<audio src="file:///var/lib/xms/media/en-US/vxml/replay_intro.wav"/>
+			<audio expr="voiceMessage"/>
+		</prompt>
+		<goto next="#main_menu"/>	
+		<clear namelist="voiceMessage"/>
+	</filled>
+</form>
+
+<!-- PRESS "3" - HANGUP
+The caller (user input) has pressed DTMF 3.  
+This form dialog will play a simple goodbye prompt (goodbye.wav) that will complete the document,
+which will end the call.
+-->
+<form id="goodbye">
+	<block>
+	<prompt xml:lang="en-US">
+		<audio src="file:///var/lib/xms/media/en-US/vxml/goodbye.wav"/>
+	</prompt>
+	</block>
+</form>
+
+</vxml>
