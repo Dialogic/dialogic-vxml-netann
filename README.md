@@ -9,9 +9,9 @@ Dialogic’s PowerMedia™ XMS is a powerful next-generation software media server t
 dialogic-vxml-netann
 ====================
 
-The Dialogic VXML / NetAnn repository contains an alphabetical reference of supported VoiceXML elements and provides information about application properties, SSML support, session variables, and application variables.
-
-The PowerMedia XMS Basic Network Media Services with SIP User's Guide provides detailed information about configuring Basic Network Media Services with SIP, focusing on Network Announcement (NETANN).
+The Dialogic PowerMedia™ XMS VoiceXML (VXML) repository contains demo sample code for creating audio dialogs that feature synthesized speech, digitized audio, speech recognition, DTMF key input, speech recording,
+telephony, and mixed initiative conversations.
+The Dialogic PowerMedia™ XMS Network Announcement (NETANN) repository contains sample code for creating basic conferencing and prompt/collecting services. These services – Basic Network Media Services with SIP, are defined by RFC 4240.
 
 
 Repository Contents
@@ -28,7 +28,7 @@ Useful Links
 
 For more information, visit the  PowerMedia XMS VXML and NetAnn Reference Guide found on in the documents section: http://www.dialogic.com/en/products/media-server-software/xms.aspx
 
-For technical questions, visit our forums: http://www.dialogic.com/den/developer_forums/f/default.aspx
+For technical questions, visit our forums:\nhttp://www.dialogic.com/den/developer_forums/f/default.aspx
 
 
 
