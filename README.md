@@ -7,17 +7,17 @@ Dialogic’s PowerMedia™ XMS is a powerful next-generation software media server t
 
 dialogic-vxml-netann
 ====================
-The Dialogic PowerMedia™ XMS VoiceXML (VXML) repository contains demo sample code for creating audio dialogs that feature synthesized speech, digitized audio, speech recognition, DTMF key input, speech recording,
-telephony, and mixed initiative conversations.
-The Dialogic PowerMedia™ XMS Network Announcement (NETANN) repository contains sample code for creating basic conferencing and prompt/collecting services. These services – Basic Network Media Services with SIP, are defined by RFC 4240.
+The Dialogic PowerMedia™ XMS VoiceXML (VXML) repository contains demo sample code for creating audio dialogs that feature synthesized speech, digitized audio, speech recognition, DTMF key input, speech recording, telephony, and mixed initiative conversations.
+
+The Dialogic PowerMedia™ XMS Network Announcement (NETANN) repository contains demo sample code for creating basic conferencing and prompt/collecting services. These services – Basic Network Media Services with SIP, are defined by RFC 4240.
 
 
 Repository Contents
 ===================
-+NetAnn_video_conferencing_server - step-by-step process starting with absolutely nothing to building a useable WebRTC video conferencing server in less than an hour. For the full guide visit: http://www.dialogic.com/den/developers/b/developers-blog/archive/2014/09/15/how-to-develop-a-webrtc-video-conferencing-server-using-powermedia-xms-free-in-an-hour.aspx
+**NetAnn_video_conferencing_server** - step-by-step process starting with absolutely nothing to building a useable WebRTC video conferencing server in less than an hour. For the full guide visit: http://www.dialogic.com/den/developers/b/developers-blog/archive/2014/09/15/how-to-develop-a-webrtc-video-conferencing-server-using-powermedia-xms-free-in-an-hour.aspx
 
 
-VXML_voicemail_demo - showcases using the VXML scripting language to record a message and playback the recorded message on Dialogic® PowerMedia™ Extended Media Server (XMS). 
+**VXML_voicemail_demo** - showcases using the VXML scripting language to record a message and playback the recorded message on Dialogic® PowerMedia™ Extended Media Server (XMS). 
 
 
 Useful Links
